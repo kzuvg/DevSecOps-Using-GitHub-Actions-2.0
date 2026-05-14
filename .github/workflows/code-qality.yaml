@@ -4,4 +4,28 @@ on:
   workflow_call:
 
 
+jobs:
 
+ validate:
+   runs-on: ubuntu-22.04
+   strategy:
+     fail-fast: true
+     matrix:
+       python-version: ["3.9", "3.10"]
+   steps:
+     - name: checkout code
+       uses: actions/checkout@v4
+     
+     - name: setup python ${{ matrix.python-version }}
+       uses: actions/setup-python@v5
+       with:
+         python-version: ${{ matrix.python-version }}
+     
+     - name: Install dependies
+       run: pip install -r requirments.txt
+
+     - name: run linter
+       run: flake8 app.py
+
+     - name: run SAST
+       run: bandit -r app.py
