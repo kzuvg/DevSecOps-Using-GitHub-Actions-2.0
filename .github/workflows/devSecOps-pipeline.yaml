@@ -1,0 +1,11 @@
+name: DevSecOps Pipeline
+
+on:
+  workflow_dispatch:
+
+
+jobs:
+
+  code-quality:
+   uses: ./.github/workflows/code-qality.yaml
+   
