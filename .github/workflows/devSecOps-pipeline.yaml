@@ -7,5 +7,7 @@ on:
 jobs:
 
   code-quality:
-   uses: ./.github/workflows/code-qality.yaml
-   
+   uses: ./.github/workflows/code-quality.yaml
+
+  Dependency-scan:
+    uses: ./.github/workflows/dependency-check.yaml
